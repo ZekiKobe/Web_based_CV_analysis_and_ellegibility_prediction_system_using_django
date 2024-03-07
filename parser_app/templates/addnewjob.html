@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from creativelayers.net/themes/jobhunt-html/index8.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 Jun 2022 15:43:34 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Add new job</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="pc" >
+  {% load static %}
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.css'%}" />
+	<link rel="stylesheet" href="{% static 'css/icons.css'%}">
+	<link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/chosen.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/colors/colors.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+<link rel="stylesheet" href="{% static '../../../maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'%}" />
+	
+</head>
+<body>
+
+<div class="page-loading">
+	<img src="images/loader.gif" alt="" />
+	<span>Skip Loader</span>
+</div>
+
+<div class="theme-layout" id="scrollup">
+	
+	<div class="responsive-header five">
+		<div class="responsive-menubar">
+			<div class="res-logo"><a href="index.html" title=""><img src="{% static 'images/resource/hr.png'%}" alt="" /></a></div>
+			<div class="menu-resaction">
+				<div class="res-openmenu">
+					<img src="{% static 'images/icon.png'%}" alt="" /> Menu
+				</div>
+				<div class="res-closemenu">
+					<img src="{% static 'images/icon2.png'%}" alt="" /> Close
+				</div>
+			</div>
+		</div>
+		<div class="responsive-opensec" >
+			<div class="btn-extars">
+				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
+				<ul class="account-btns">
+					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+				</ul>
+			</div><!-- Btn Extras -->
+			<form class="res-search">
+				<input type="text" placeholder="Job title, keywords or company name" />
+				<button type="submit"><i class="la la-search"></i></button>
+			</form>
+			<div class="responsivemenu">
+				<ul>
+          
+          <li class="menu-item">
+            <a href="adminPage" title=""><span><i class="la la-arrow-left"></i></span> Back</a>
+          </li>
+          
+        </ul>
+			</div>
+		</div>
+	</div>
+	
+	<header class="style5">
+		<div class="menu-sec">
+			<div class="container fluid">
+				<nav>
+					<ul>
+						<li class="menu-item">
+							<a href="adminPage" title=""><span><i class="la la-arrow-left"></i></span> Back</a>
+						  </li>
+						
+					</ul>
+				</nav><!-- Menus -->
+				<div class="logo">
+					<a href="index.html" title=""><img src="{% static 'images/resource/hr.png'%}" alt="" width="40px" height="40px"/></a>
+				</div><!-- Logo -->
+				<div class="btn-extars">
+					<ul class="account-btns">
+            <li class="signout-popup"><a href="adminlogout"><i class="la la-external-link-square"></i> Logout</a></li>
+
+						</ul>
+				</div><!-- Btn Extras -->
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="add-new-job" style="box-shadow: 2px 2px 2px 2px gray; padding-top:10px; padding:10px; background-color:orangered;">
+			<h3 style="color:white;">Add New Job</h3>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signup-popup-box static">
+							<div class="account-popup">
+								
+								<form action="newjob" method="post" enctype="multipart/form-data">
+									{% csrf_token %}									
+                  <div class="cfield">
+										<input type="text"  name="jobid" placeholder="Job ID" required />
+										<i class="la la-name"></i>
+									</div>
+									<div class="dropdown-field">
+										<select placeholder-data="Job Name" class="chosen" name="jobrole">
+											<option value="Select">----Job name----</option>
+											<option value="Python Developer">Python Developer</option>
+											<option  value="Java Developer">Java Developer</option>
+											<option  value="Sales Manager">Sales Manager</option>
+											<option  value="HR Excecutive">HR Excecutive</option>
+											<option  value="Trainer">Trainer</option>
+											<option  value="Technician">Technician</option>
+										</select> 
+									</div>
+									<div class="cfield">
+										<input type="text" placeholder="Job Creation Date" id="date" name="jobdate" required/>
+										<i class="la la-date"></i>
+									</div>
+									<div class="cfield">
+										<input type="number" placeholder="Experience" name="jobexp" required/>
+									</div>
+									<div class="cfield">
+										<input type="text" placeholder="Job location" name="joblocation" required/>
+									</div>
+                  <i>Upload Description:</i>
+
+									<div class="cfield">
+										<input type="file" placeholder="Upload Description:" name="jobdescription" required /> <br /><br />
+									</div>
+									{% for msg in messages %}
+									<p><i style="color:green;">{{msg}}</i></p>
+								{% endfor %} 
+									<button type="submit" onclick="check()">Submit</button>
+								</form>
+								
+							</div>
+						</div><!-- SIGNUP POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="style3">
+		<div class="bottom-line style3">
+			<div class="container">
+				<span>© 2023 AMU All rights reserved.</span>
+				<a class="back-top" href="#scrollup" title=""><i class="la la-long-arrow-up"></i></a>
+			</div>
+		</div>
+	</footer>
+
+</div>
+
+<!-- LOGIN POPUP -->
+
+
+<script src="{% static 'js/jquery.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/modernizr.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/script.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/wow.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/slick.min.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/parallax.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/select-chosen.js'%}" type="text/javascript"></script>
+<script src="{% static 'js/counter.js'%}" type="text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from creativelayers.net/themes/jobhunt-html/index8.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 Jun 2022 15:44:06 GMT -->
+</html>
+
