@@ -1,4 +1,4 @@
-# Job-Applicants-Analyzer-Using-Machine-Learning-Techniques
+# CV-Analyser using NLP
 
 It analyzes a applicants personality and resume using machine learning methods and calculates a matching percentage for it. 
 
